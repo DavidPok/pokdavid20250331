@@ -1,1 +1,32 @@
-<p>recipes works!</p>
+<div class="container mt-4">
+    <h2>Receptek</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Név</th>
+          <th>Nehézség</th>
+          <th>Értékelés</th>
+          <th>Konyha</th>
+          <th>Műveletek</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let recipe of recipes">
+          <td>{{ recipe.id }}</td>
+          <td>{{ recipe.name }}</td>
+          <td>{{ recipe.difficulty }}</td>
+          <td>{{ recipe.rating }}</td>
+          <td>{{ recipe.cuisine }}</td>
+          <td>
+            <button class="btn btn-primary me-2" 
+                    [routerLink]="['read', recipe.id]">Megtekintés</button>
+            <button class="btn btn-warning" 
+                    [routerLink]="['update', recipe.id]">Szerkesztés</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <router-outlet></router-outlet>

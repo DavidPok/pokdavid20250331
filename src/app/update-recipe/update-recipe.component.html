@@ -1,1 +1,42 @@
-<p>update-recipe works!</p>
+<div class="container mt-4">
+    <h2>Recept szerkesztése</h2>
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Név</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+        <div *ngIf="recipeForm.get('name')?.invalid && recipeForm.get('name')?.touched" 
+             class="text-danger">
+          A név megadása kötelező
+        </div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="prepTimeMinutes" class="form-label">Előkészítési idő (perc)</label>
+        <input type="number" class="form-control" id="prepTimeMinutes" formControlName="prepTimeMinutes">
+        <div *ngIf="recipeForm.get('prepTimeMinutes')?.invalid && recipeForm.get('prepTimeMinutes')?.touched" 
+             class="text-danger">
+          Az előkészítési idő megadása kötelező és legalább 5 perc
+        </div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="cookTimeMinutes" class="form-label">Főzési idő (perc)</label>
+        <input type="number" class="form-control" id="cookTimeMinutes" formControlName="cookTimeMinutes">
+        <div *ngIf="recipeForm.get('cookTimeMinutes')?.invalid && recipeForm.get('cookTimeMinutes')?.touched" 
+             class="text-danger">
+          A főzési idő megadása kötelező és legalább 5 perc
+        </div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="cuisine" class="form-label">Konyha</label>
+        <input type="text" class="form-control" id="cuisine" formControlName="cuisine">
+        <div *ngIf="recipeForm.get('cuisine')?.invalid && recipeForm.get('cuisine')?.touched" 
+             class="text-danger">
+          A konyha megadása kötelező
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary" [disabled]="!recipeForm.valid">Mentés</button>
+    </form>
+  </div>
